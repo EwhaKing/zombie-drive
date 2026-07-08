@@ -14,5 +14,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test.unity
     guid: 580d3563e6232da4e9472053d82a34d5
+  - enabled: 1
+    path: Assets/Scenes/Driving.unity
+    guid: 4ca0c269a76902e4798690e2523a4cbf
+  - enabled: 1
+    path: Assets/Scenes/Farming.unity
+    guid: 9508c651f4a8b5e45bed620eb5c9498f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
