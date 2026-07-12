@@ -5,6 +5,9 @@ public class DrivingManager : MonoBehaviour
 {
     public static DrivingManager Instance;
 
+    [Header("날짜 설정")]
+    public int currentDay = 1;
+
     [Header("타이머 설정")]
     public float popupInterval = 5f;   // 알림창이 뜨는 간격 (5분 = 300초). 테스트 땐 5~10으로 줄여서 확인하세요.
     private float timer;                 // 현재까지 흐른 시간
@@ -95,8 +98,19 @@ public class DrivingManager : MonoBehaviour
         farmedCountToday += 1;   // 오늘 내린 횟수 +1
         timer = 0f;              // 복귀 완료 시점부터 5분 타이머 재시작
 
+        // 파밍 3회 완료 시 다음 날로 전환
+        if (farmedCountToday >= REQUIRED_FARM_COUNT)
+        {
+            EndDay();
+        }
+        else
+        {
+            // 아직 3회를 채우지 않았다면 주행 재개
+            isPopupActive = false;
+        }
+
         // DrivingScene으로 돌아왔으므로 다시 타이머 작동
-        isPopupActive = false;
+        //isPopupActive = false;
 
         if (farmedCountToday >= REQUIRED_FARM_COUNT)
         {
@@ -107,8 +121,22 @@ public class DrivingManager : MonoBehaviour
     // 하루치 파밍(3회)이 다 끝났을 때 호출
     private void EndDay()
     {
-        enabled = false; // 이 스크립트의 Update()를 멈춰서 타이머 정지
-        Debug.Log("하루 끝! 다음 날로 전환 처리 필요");
+        // 날짜 증가
+        currentDay++;
+
+        // 오늘 파밍 횟수 초기화
+        farmedCountToday = 0;
+
+        // 팝업 타이머도 처음부터 다시 시작
+        timer = 0f;
+
+        // 다시 주행 가능 상태로 변경
+        isPopupActive = false;
+
+        Debug.Log("다음 날 시작! Day " + currentDay);
+
+        //enabled = false; // 이 스크립트의 Update()를 멈춰서 타이머 정지
+        //Debug.Log("하루 끝! 다음 날로 전환 처리 필요");
         // TODO: 다음 날로 넘어가는 로직(DayManager 등)을 여기서 호출하면 됨
     }
 }
