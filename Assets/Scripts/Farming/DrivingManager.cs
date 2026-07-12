@@ -50,6 +50,11 @@ public class DrivingManager : MonoBehaviour
     // 5분이 지나서 알림창을 띄우는 함수
     private void ShowNavigationPopup()
     {
+        if (NavigationPopupUI.Instance == null)
+        {
+            return;
+        }
+
         isPopupActive = true;
         NavigationPopupUI.Instance.Show(hpCostPerFarm);
     }
@@ -71,7 +76,7 @@ public class DrivingManager : MonoBehaviour
     public void StartFarming(int cost)
     {
         currentHp -= cost;          // 체력 소모
-        isPopupActive = false;
+        isPopupActive = true;       // 파밍 씬에 있는 동안에는 주행 타이머가 작동하지 않도록 유지
 
         // 파밍 씬으로 전환 (콜백 필요 없음, 그냥 이동만 하면 됨)
         SceneTransition.Instance.GoToScene("Farming");
@@ -81,7 +86,7 @@ public class DrivingManager : MonoBehaviour
     public void ReturnFromFarming()
     {
         // 씬 전환이 끝난 "직후" OnReturnedToDrivingScene을 실행해달라고 콜백으로 넘김
-        SceneTransition.Instance.GoToSceneWithCallback("Driving", OnReturnedToDrivingScene);
+        SceneTransition.Instance.GoToSceneWithCallback("DrivingScene", OnReturnedToDrivingScene);
     }
 
     // 주행 씬으로 복귀 완료된 직후 실행되는 함수
@@ -89,6 +94,9 @@ public class DrivingManager : MonoBehaviour
     {
         farmedCountToday += 1;   // 오늘 내린 횟수 +1
         timer = 0f;              // 복귀 완료 시점부터 5분 타이머 재시작
+
+        // DrivingScene으로 돌아왔으므로 다시 타이머 작동
+        isPopupActive = false;
 
         if (farmedCountToday >= REQUIRED_FARM_COUNT)
         {
