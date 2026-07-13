@@ -13,6 +13,7 @@ public class DrivingManager : MonoBehaviour
     private float timer;                 // 현재까지 흐른 시간
 
     [Header("체력 설정")]
+    public int maxHp = 100;
     public int currentHp = 100;          // 현재 체력
     public int hpCostPerFarm = 20;       // 이번 알림창에서 소모될 체력 (알림창마다 다르면 여기 값을 바꿔주면 됨)
 
