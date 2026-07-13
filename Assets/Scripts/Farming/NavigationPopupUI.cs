@@ -59,4 +59,12 @@ public class NavigationPopupUI : MonoBehaviour
             if (warningText != null) warningText.text = "체력이 부족합니다";
         }
     }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 }
