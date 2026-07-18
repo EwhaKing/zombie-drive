@@ -18,5 +18,5 @@ public class BackSceneChanger : MonoBehaviour
     private void ChangeToBottomUIScene()
     {
         // 이동할 씬의 정확한 이름을 적어줍니다. (대소문자 구분 필수!)
-        SceneManager.LoadScene("BottomUI"); 
+        SceneManager.LoadScene("DrivingScene"); 
     }}

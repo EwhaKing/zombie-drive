@@ -24,6 +24,8 @@ public class DrivingManager : MonoBehaviour
     // 지금 알림창이 화면에 떠 있는 상태인지 여부. 떠 있는 동안엔 타이머가 멈춰야 함.
     public bool isPopupActive = false;
 
+
+
     private void Awake()
     {
         if (Instance == null)

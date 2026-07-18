@@ -21,6 +21,10 @@ public class SceneTransition : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            // 시작할 때 검은 화면은 완전히 꺼진 상태로 초기화
+            blackScreen.alpha = 0f;
+            blackScreen.blocksRaycasts = false;
+            blackScreen.interactable = false;
         }
         else
         {
