@@ -23,5 +23,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Character.unity
     guid: 817396899acda7b4f8a33224dfe86949
+  - enabled: 1
+    path: Assets/Scenes/DrivingScene.unity
+    guid: 9d7eb0bd340c05441acb24b88c02b286
+  - enabled: 1
+    path: Assets/Scenes/ChargingMinigame.unity
+    guid: b2282ce32d9179d48bdf3e9dbf060910
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
