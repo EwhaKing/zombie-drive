@@ -173,7 +173,7 @@ MonoBehaviour:
   point1: {fileID: 325557607}
   point2: {fileID: 579173633}
   point3: {fileID: 1714296605}
-  baseSpeed: 1
+  baseSpeed: 0.05
   speedIncreasePerSecond: 0.05
 --- !u!114 &87764507
 MonoBehaviour:
