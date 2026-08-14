@@ -45,8 +45,12 @@ public class FridgeMiniGameManager : MonoBehaviour
         [Tooltip("체크하면 클릭으로 화면을 전환하지 않고, 오버뷰 화면에 놓인 dragTarget을 바로 드래그해서 치울 수 있습니다.")]
         public bool playDirectlyInOverview = false;
 
+        // 기존 [Header("얼룩 닦기용 (WipeSmudge)")] 아래 부분을 다음과 같이 수정
         [Header("얼룩 닦기용 (WipeSmudge)")]
-        public GameObject[] smudgeMasks;   // 각각 Image만 있으면 됨 
+        public GameObject smudgePrefab;         // 프로젝트 창에서 만든 얼룩 프리팹
+        public RectTransform spawnArea;         // 얼룩이 생성될 냉장고 안 UI 영역
+
+        [HideInInspector] public List<GameObject> activeSmudgeList = new List<GameObject>(); // 동적 생성된 얼룩 관리용
 
         [Header("더미 치우기용 (DragPile)")]
         public GameObject dragTarget;      // Image만 있으면 됨 
@@ -229,11 +233,51 @@ public class FridgeMiniGameManager : MonoBehaviour
 
         if (spot.minigameType == MinigameType.WipeSmudge)
         {
-            foreach (var mask in spot.smudgeMasks)
+            // 1. 이전 판에 남아있던 얼룩 오브젝트 모두 삭제
+            foreach (var oldSmudge in spot.activeSmudgeList)
             {
-                if (mask == null) continue;
-                mask.SetActive(true);
-                wipeProgress[mask] = 0f;
+                if (oldSmudge != null) Destroy(oldSmudge);
+            }
+            spot.activeSmudgeList.Clear();
+
+            if (spot.smudgePrefab != null && spot.spawnArea != null)
+            {
+                // 2. 2개 또는 3개 중 랜덤 생성 (Random.Range 정수형은 마지막 값 제외이므로 2, 4 입력)
+                int count = Random.Range(2, 4);
+
+                // spawnArea의 사각형 크기 정보 가져오기
+                Rect areaRect = spot.spawnArea.rect;
+
+                for (int i = 0; i < count; i++)
+                {
+                    // 3. spawnArea 범위 안에서 랜덤 좌표 계산
+                    // (경계선에 딱 붙지 않도록 20px 정도 여백을 줌)
+                    float padding = 50f;
+                    float randomX = Random.Range(areaRect.xMin + padding, areaRect.xMax - padding);
+                    float randomY = Random.Range(areaRect.yMin + padding, areaRect.yMax - padding);
+
+                    // 4. 프리팹 생성 후 spawnArea 하위(자식)로 배치
+                    GameObject newSmudge = Instantiate(spot.smudgePrefab, spot.spawnArea);
+                    RectTransform rect = newSmudge.GetComponent<RectTransform>();
+                    if (rect != null)
+                    {
+                        rect.anchoredPosition = new Vector2(randomX, randomY);
+                    }
+
+                    // 5. 투명도 및 상태 초기화
+                    newSmudge.SetActive(true);
+                    Image maskImage = newSmudge.GetComponent<Image>();
+                    if (maskImage != null)
+                    {
+                        Color c = maskImage.color;
+                        c.a = 1f;
+                        maskImage.color = c;
+                    }
+
+                    // 리스트 및 진행도에 등록
+                    spot.activeSmudgeList.Add(newSmudge);
+                    wipeProgress[newSmudge] = 0f;
+                }
             }
         }
         else if (spot.minigameType == MinigameType.DragPile)
@@ -256,27 +300,26 @@ public class FridgeMiniGameManager : MonoBehaviour
         {
             GameObject hit = RaycastUI(Input.mousePosition);
 
-            foreach (var mask in currentSpot.smudgeMasks)
+            // 동적으로 생성된 activeSmudgeList를 순회
+            foreach (var mask in currentSpot.activeSmudgeList)
             {
                 if (mask == null || !mask.activeSelf) continue;
                 if (!IsSameOrChild(hit, mask)) continue;
 
-                // 실제로 마우스가 움직인만큼 누적
                 if (!wipeProgress.ContainsKey(mask)) wipeProgress[mask] = 0f;
                 wipeProgress[mask] += mouseDelta.magnitude;
 
-                // 문지른 비율에 따라 알파값 조절(0~1)
+                // 문지른 비율에 따라 알파값(투명도) 감소
                 float progressRatio = Mathf.Clamp01(wipeProgress[mask] / wipeThreshold);
-
                 Image maskImage = mask.GetComponent<Image>();
                 if (maskImage != null)
                 {
                     Color color = maskImage.color;
-                    color.a = 1f - progressRatio; // progressRatio가 올라갈수록 Alpha는 1에서 0으로 감소
+                    color.a = 1f - progressRatio;
                     maskImage.color = color;
                 }
 
-                // 목표 수치(wipeThreshold) 달성 시 오브젝트 비활성화 및 카운트 증가
+                // 다 문질렀으면 비활성화 및 카운트 증가
                 if (wipeProgress[mask] >= wipeThreshold)
                 {
                     mask.SetActive(false);
@@ -286,7 +329,8 @@ public class FridgeMiniGameManager : MonoBehaviour
             }
         }
 
-        if (currentSpot.wipedCount >= currentSpot.smudgeMasks.Length)
+        // 모든 얼룩이 다 지워졌는지 체크
+        if (currentSpot.activeSmudgeList.Count > 0 && currentSpot.wipedCount >= currentSpot.activeSmudgeList.Count)
         {
             GiveRandomFood(currentSpot);
             Invoke(nameof(ExitCloseup), 0.4f);
