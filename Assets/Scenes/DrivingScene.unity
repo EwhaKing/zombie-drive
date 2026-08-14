@@ -7228,7 +7228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 724061281381795116, guid: 837387f408b2ea14bba073426eeda95c, type: 3}
       propertyPath: m_Name
-      value: BottomUI
+      value: BottomUIPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 1513754758848745149, guid: 837387f408b2ea14bba073426eeda95c, type: 3}
       propertyPath: m_AnchorMax.y
