@@ -7,7 +7,6 @@ public class ObjectPressHighlight :
     IPointerUpHandler,
     IPointerExitHandler
 {
-    [Header("누르는 동안만 표시할 노란 테두리")]
     [SerializeField] private GameObject highlightObject;
 
     private void Awake()

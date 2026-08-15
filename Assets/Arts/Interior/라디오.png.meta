@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0f696bdad823ecc4b9e2b4b85d3cbaae
+guid: a9ab79b0557ed964e8d64fabc9f0c5d3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2347246934327238903
-    second: interior(night)_0
+      213: -3493344968904147368
+    second: "\uB77C\uB514\uC624_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,6 +97,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -113,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: interior(night)_0
+      name: "\uB77C\uB514\uC624_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 280
-        height: 495
+        width: 183
+        height: 208
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f023b886a8139020800000000000000
-      internalID: 2347246934327238903
+      spriteID: 85ef1926245258fc0800000000000000
+      internalID: -3493344968904147368
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      interior(night)_0: 2347246934327238903
+      "\uB77C\uB514\uC624_0": -3493344968904147368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
