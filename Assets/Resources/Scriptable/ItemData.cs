@@ -1,10 +1,19 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewItem", menuName = "Inventory/ItemData")]
+public enum ItemCategory
+{
+    Food,      // 식량
+    Material,  // 재료
+    Medicine,  // 약
+    Furniture, // 가구
+    Clothes    // 옷
+}
+
+[CreateAssetMenu(fileName = "NewItemData", menuName = "Inventory/ItemData")]
 public class ItemData : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
-    [TextArea] public string description;
-    [Range(0.01f, 100f)] public float weight = 10f;
+    public ItemCategory category; 
+    public float weight; 
 }

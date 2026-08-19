@@ -47,15 +47,22 @@ public class FridgeMiniGameManager : MonoBehaviour
     }
 
     // 인벤토리 아이템 추가 (외부 스크립트에서 호출)
-    public void AddToInventory(ItemData item, int count = 1)
-    {
-        if (item == null) return;
+        public void AddToInventory(ItemData item, int count = 1)
+        {
+            if (item == null) return;
 
-        if (inventory.ContainsKey(item)) inventory[item] += count;
-        else inventory[item] = count;
+            // [수정된 부분] 메인 씬과 공유되는 싱글톤 인벤토리 매니저에 아이템 저장
+            if (InventoryManager.Instance != null)
+            {
+                InventoryManager.Instance.AddItem(item, count);
+            }
 
-        if (inventoryUI != null) inventoryUI.UpdateUI(inventory);
-    }
+            // 기존 씬 내부 UI 업데이트가 필요하다면 유지 (필요 없는 경우 제거 가능)
+            if (inventory.ContainsKey(item)) inventory[item] += count;
+            else inventory[item] = count;
+
+            if (inventoryUI != null) inventoryUI.UpdateUI(inventory);
+        }
 
     // 가중치(Weight) 기반 랜덤 아이템 뽑기 유틸리티
     public ItemData GetRandomItem(List<ItemData> possibleFoods)
