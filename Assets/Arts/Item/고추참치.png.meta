@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fdc17725f524f9547905ff8ce54b3e6c
+guid: 17e2098fce1cf8c46ac9312fe2d6ce4a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2297708358376672982
-    second: "\uC880\uB4DC \uBC30\uACBD \uC885\uD569\uBCF8_0"
+      213: -3487613530060801957
+    second: "\u1100\u1169\u110E\u116E\u110E\u1161\u11B7\u110E\u1175_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WindowsStoreApps
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC880\uB4DC \uBC30\uACBD \uC885\uD569\uBCF8_0"
+      name: "\u1100\u1169\u110E\u116E\u110E\u1161\u11B7\u110E\u1175_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1080
-        height: 1920
+        x: 25
+        y: 11
+        width: 284
+        height: 275
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6decc72049913ef10800000000000000
-      internalID: 2297708358376672982
+      spriteID: b5831eaf8f1899fc0800000000000000
+      internalID: -3487613530060801957
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uC880\uB4DC \uBC30\uACBD \uC885\uD569\uBCF8_0": 2297708358376672982
+      "\u1100\u1169\u110E\u116E\u110E\u1161\u11B7\u110E\u1175_0": -3487613530060801957
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

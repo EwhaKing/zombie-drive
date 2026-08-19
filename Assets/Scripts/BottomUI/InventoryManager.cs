@@ -62,12 +62,12 @@ public class InventoryManager : MonoBehaviour
                                item.itemName.Contains(currentSearchQuery);
 
             // 둘 다 맞으면 화면에 슬롯을 하나 만들어라!
-            if (matchCategory && matchSearch)
+            /*if (matchCategory && matchSearch)
             {
                 GameObject newSlot = Instantiate(itemSlotPrefab, contentParent);
                 ItemSlot slotScript = newSlot.GetComponent<ItemSlot>();
                 slotScript.Setup(item);
-            }
+            }*/
         }
     }
 

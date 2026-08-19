@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot1 : MonoBehaviour
 {
     [SerializeField] private Image itemIconImage;     // 아이콘이 들어갈 Image 컴포넌트
     [SerializeField] private TextMeshProUGUI itemNameText; // 이름이 들어갈 Text 컴포넌트
