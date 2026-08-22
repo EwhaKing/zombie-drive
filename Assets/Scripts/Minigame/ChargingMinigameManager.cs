@@ -5,8 +5,18 @@ using TMPro;
 public class ChargingMinigameManager : MonoBehaviour
 {
     public TMP_Text timerText;
+    public ChargingGameLogic gameLogic;
+    public GameObject resultPopup;
+    public TMP_Text resultText;
+    public GameObject gameplayGroup;
+
     private float timeRemaining = 30f;
     private bool isGameActive = true;
+
+    void Awake()
+    {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+    }
 
     void Update()
     {
@@ -23,21 +33,25 @@ public class ChargingMinigameManager : MonoBehaviour
         timerText.text = Mathf.CeilToInt(timeRemaining).ToString() + "초";
     }
 
-   public ChargingGameLogic gameLogic; // Inspector에서 연결
+    void EndGame()
+    {
+        isGameActive = false;
+        gameLogic.StopGame();   // ← 추가: 게임 로직도 멈추기
+        float finalGauge = gameLogic.GetGaugeValue();
+        Debug.Log("30초 경과 - 미니게임 종료. 최종 게이지: " + finalGauge);
 
-void EndGame()
-{
-    isGameActive = false;
-    float finalGauge = gameLogic.GetGaugeValue();
-    Debug.Log("30초 경과 - 미니게임 종료. 최종 게이지: " + finalGauge);
-    // TODO: 나중에 이 finalGauge 값을 실제 배터리 시스템에 전달
-    Screen.orientation = ScreenOrientation.Portrait;
-    SceneManager.LoadScene("Farming");
-}
-    void Awake()
-{
-    Screen.orientation = ScreenOrientation.LandscapeLeft;
-}
+        gameplayGroup.SetActive(false);   // ← 추가: 게임 화면 전체 숨기기
 
+        // 결과 팝업 띄우기 (씬 전환은 여기서 안 함)
+        int percentage = Mathf.RoundToInt(finalGauge * 100);
+        resultText.text = "충전 완료!\n게이지: " + percentage + "%";
+        resultPopup.SetActive(true);
+    }
 
+    // "확인" 버튼에 연결할 함수
+    public void OnConfirmClick()
+    {
+        Screen.orientation = ScreenOrientation.Portrait;
+        SceneManager.LoadScene("Farming");
+    }
 }

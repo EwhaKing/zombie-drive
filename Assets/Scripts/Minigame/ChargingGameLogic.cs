@@ -26,6 +26,8 @@ public class ChargingGameLogic : MonoBehaviour
     private bool isFrozen = false;
     private float freezeTimer = 0f;
 
+    private bool isGameActive = true;  
+
     void Start()
     {
         points = new RectTransform[] { point1, point2, point3 };
@@ -35,6 +37,8 @@ public class ChargingGameLogic : MonoBehaviour
 
     void Update()
     {
+        if (!isGameActive) return;   // ← 추가: 게임 끝났으면 아무것도 안 함
+
         if (isFrozen)
         {
             freezeTimer -= Time.deltaTime;
@@ -50,6 +54,11 @@ public class ChargingGameLogic : MonoBehaviour
         {
             CheckTiming();
         }
+    }
+
+    public void StopGame()   // ← 추가: 매니저가 게임 끝날 때 호출할 함수
+    {
+        isGameActive = false;
     }
 
     void UpdateHighlight()
