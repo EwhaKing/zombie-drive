@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 246f260cf70fe5c4793348a70909b659
+guid: 8f55f170ef6e631419cc60b36bc4e3a6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7467868759468936683
-    second: KakaoTalk_20260729_170206029_04_0
+      213: -7810436752241041853
+    second: 33335896b5a1c690bc2d338919987226_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -110,19 +110,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -139,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KakaoTalk_20260729_170206029_04_0
+      name: 33335896b5a1c690bc2d338919987226_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 736
-        height: 414
+        width: 1061
+        height: 1575
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 512fd920eeccc5890800000000000000
-      internalID: -7467868759468936683
+      spriteID: 34e5402c721cb9390800000000000000
+      internalID: -7810436752241041853
       vertices: []
       indices: 
       edges: []
@@ -174,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      KakaoTalk_20260729_170206029_04_0: -7467868759468936683
+      33335896b5a1c690bc2d338919987226_0: -7810436752241041853
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
