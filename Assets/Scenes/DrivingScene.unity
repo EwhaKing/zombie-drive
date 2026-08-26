@@ -6455,7 +6455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1146090731}
-  - component: {fileID: 1146090730}
+  - component: {fileID: 1146090732}
   m_Layer: 0
   m_Name: SceneOrientation
   m_TagString: Untagged
@@ -6463,19 +6463,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1146090730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1146090729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 427b6e159e3dd144c9a0c95ed7cd69b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneOrientation
-  orientation: 0
 --- !u!4 &1146090731
 Transform:
   m_ObjectHideFlags: 0
@@ -6491,6 +6478,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1146090732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146090729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeafe85cd4e3503438ead4a75f924659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenOrientationSetter
+  targetOrientation: 1
 --- !u!224 &1158317240 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8127019907006185361, guid: 4babcdadf9287304988e3b7bf8be7502, type: 3}
@@ -12119,6 +12119,10 @@ MonoBehaviour:
   currentHp: 100
   hpCostPerFarm: 20
   farmedCountToday: 0
+  destinationScenes:
+  - StoreGame
+  - ChargingMinigame
+  - RepairShop
   isPopupActive: 0
 --- !u!114 &6676839278691790277
 MonoBehaviour:

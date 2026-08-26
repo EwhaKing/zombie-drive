@@ -10,98 +10,68 @@ public class DraggableBolt : MonoBehaviour,
     private Canvas canvas;
     private CanvasGroup canvasGroup;
 
-    private Vector2 originalPosition;
-    private bool positionSaved;
+    private Vector2 startPosition;
 
-    private BoltSlot targetSlot;
+    public bool IsUsed { get; private set; }
 
-    private void CacheComponents()
+    private void Awake()
     {
-        if (rectTransform == null)
-            rectTransform = GetComponent<RectTransform>();
-
-        if (canvas == null)
-            canvas = GetComponentInParent<Canvas>();
-
-        if (canvasGroup == null)
-        {
-            canvasGroup = GetComponent<CanvasGroup>();
-
-            if (canvasGroup == null)
-                canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-
-        if (!positionSaved && rectTransform != null)
-        {
-            originalPosition = rectTransform.anchoredPosition;
-            positionSaved = true;
-        }
+        rectTransform = GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void Bind(BoltSlot slot)
-    {
-        CacheComponents();
-
-        targetSlot = slot;
-
-        ResetPosition();
-    }
-
-    public void ResetPosition()
-    {
-        CacheComponents();
-
-        if (rectTransform != null && positionSaved)
-        {
-            rectTransform.anchoredPosition = originalPosition;
-        }
-    }
-
+    // -----------------------------
+    // 드래그 시작
+    // -----------------------------
     public void OnBeginDrag(PointerEventData eventData)
     {
-        CacheComponents();
+        if (IsUsed)
+            return;
+
+        startPosition = rectTransform.anchoredPosition;
 
         canvasGroup.blocksRaycasts = false;
+
+        transform.SetAsLastSibling();
     }
 
+    // -----------------------------
+    // 드래그 중
+    // -----------------------------
     public void OnDrag(PointerEventData eventData)
     {
-        if (rectTransform == null || canvas == null)
+        if (IsUsed)
             return;
 
         rectTransform.anchoredPosition +=
             eventData.delta / canvas.scaleFactor;
     }
 
+    // -----------------------------
+    // 드래그 종료
+    // -----------------------------
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (IsUsed)
+            return;
+
         canvasGroup.blocksRaycasts = true;
 
-        if (targetSlot == null)
-        {
-            ResetPosition();
-            return;
-        }
+        // 빈 구멍에 제대로 들어가지 않았다면
+        // 원래 자리로 되돌아감
+        rectTransform.anchoredPosition = startPosition;
+    }
 
-        bool inside =
-            RectTransformUtility.RectangleContainsScreenPoint(
-                targetSlot.DropArea,
-                eventData.position,
-                eventData.pressEventCamera
-            );
+    // -----------------------------
+    // 구멍에 정상적으로 들어감
+    // -----------------------------
+    public void UseBolt()
+    {
+        IsUsed = true;
 
-        if (inside)
-        {
-            bool attached =
-                targetSlot.AttachFromDrag();
+        canvasGroup.blocksRaycasts = true;
 
-            if (attached)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
-        }
-
-        ResetPosition();
+        gameObject.SetActive(false);
     }
 }

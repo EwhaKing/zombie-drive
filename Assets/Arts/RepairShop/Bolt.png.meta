@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b195dac34425cda4ab1e6d6dd6b34eb7
+guid: dbece5f954b879f4eaf1294b2dac46c9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4669108371552365200
-    second: shadow-circle-neumorphic-circle-shape-technology-shapes_700809_wh860_0
+      213: -2644910922070871717
+    second: "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 02_24_42 (2)_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shadow-circle-neumorphic-circle-shape-technology-shapes_700809_wh860_0
+      name: "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 02_24_42 (2)_0"
       rect:
         serializedVersion: 2
-        x: 0
+        x: 56
         y: 0
-        width: 860
-        height: 860
+        width: 1163
+        height: 1234
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 09a6e2073510cc040800000000000000
-      internalID: 4669108371552365200
+      spriteID: b513a6b97836b4bd0800000000000000
+      internalID: -2644910922070871717
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shadow-circle-neumorphic-circle-shape-technology-shapes_700809_wh860_0: 4669108371552365200
+      "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 02_24_42 (2)_0": -2644910922070871717
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

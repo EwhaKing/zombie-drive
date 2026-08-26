@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 93af5d1630020e943a4fe931553c3157
+guid: a551e3d566378dd4da4c8f720cc10133
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5445031083371940710
-    second: Yellow-PNG-Image_0
+      213: -3718152548875285202
+    second: "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 01_25_14 (1)_0"
+  - first:
+      213: 5544751132439827493
+    second: "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 01_25_14 (1)_1"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Yellow-PNG-Image_0
+      name: "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 01_25_14 (1)_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 729
-        height: 720
+        x: 44
+        y: 44
+        width: 1181
+        height: 1164
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 66b485bdbe2a09b40800000000000000
-      internalID: 5445031083371940710
+      spriteID: e2d4397d4f7766cc0800000000000000
+      internalID: -3718152548875285202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 01_25_14 (1)_1"
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 1046
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 524550117c9e2fc40800000000000000
+      internalID: 5544751132439827493
       vertices: []
       indices: 
       edges: []
@@ -161,7 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Yellow-PNG-Image_0: 5445031083371940710
+      "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 01_25_14 (1)_0": -3718152548875285202
+      "ChatGPT Image 2026\uB144 8\uC6D4 27\uC77C \uC624\uC804 01_25_14 (1)_1": 5544751132439827493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -2,133 +2,121 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BoltSlot : MonoBehaviour, IPointerClickHandler
+public enum BoltState
 {
-    public enum BoltState
-    {
-        Full,
-        Half,
-        Missing
-    }
+    Inserted,       // 정상적으로 끼워짐
+    HalfInserted,   // 반쯤 튀어나옴
+    Empty           // 아예 빠짐
+}
 
-    [Header("초기 상태")]
-    public BoltState initialState;
+public class BoltSlot : MonoBehaviour,
+    IPointerClickHandler,
+    IDropHandler
+{
+    [Header("UI")]
+    [SerializeField] private GameObject holeImage;
+    [SerializeField] private Image boltImage;
 
-    [Header("이미지")]
-    public Image boltImage;
-    public GameObject holeVisual;
-
-    public Sprite fullBoltSprite;
-    public Sprite halfBoltSprite;
-
-    [Header("빠진 나사일 경우 바닥 나사")]
-    public DraggableBolt floorBolt;
-
-    [Header("Manager")]
-    public RepairShopGameManager gameManager;
+    [Header("나사 이미지")]
+    [SerializeField] private Sprite insertedBoltSprite;
+    [SerializeField] private Sprite halfInsertedBoltSprite;
 
     private BoltState currentState;
 
-    public bool IsCompleted
+    private BoltPhaseManager manager;
+
+    public BoltState CurrentState => currentState;
+
+    // -----------------------------
+    // 초기 상태 설정
+    // -----------------------------
+    public void Setup(
+        BoltState state,
+        BoltPhaseManager boltManager)
     {
-        get { return currentState == BoltState.Full; }
+        manager = boltManager;
+
+        SetState(state);
     }
 
-    public RectTransform DropArea
+    // -----------------------------
+    // 상태 변경
+    // -----------------------------
+    private void SetState(BoltState state)
     {
-        get { return transform as RectTransform; }
-    }
+        currentState = state;
 
-    public void ResetSlot()
-    {
-        currentState = initialState;
-
-        if (floorBolt != null)
-        {
-            floorBolt.Bind(this);
-
-            bool shouldShow =
-                initialState == BoltState.Missing;
-
-            floorBolt.gameObject.SetActive(shouldShow);
-        }
-
-        ApplyVisual();
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (gameManager == null)
-            return;
-
-        if (!gameManager.IsBoltStageActive)
-            return;
-
-        // 반쯤 끼워진 나사만 터치로 완전 체결
-        if (currentState == BoltState.Half)
-        {
-            currentState = BoltState.Full;
-
-            ApplyVisual();
-
-            gameManager.NotifyBoltChanged();
-        }
-    }
-
-    public bool AttachFromDrag()
-    {
-        if (gameManager == null)
-            return false;
-
-        if (!gameManager.IsBoltStageActive)
-            return false;
-
-        if (currentState != BoltState.Missing)
-            return false;
-
-        currentState = BoltState.Full;
-
-        ApplyVisual();
-
-        gameManager.NotifyBoltChanged();
-
-        return true;
-    }
-
-    private void ApplyVisual()
-    {
         switch (currentState)
         {
-            case BoltState.Full:
+            case BoltState.Inserted:
 
-                boltImage.enabled = true;
-                boltImage.sprite = fullBoltSprite;
+                holeImage.SetActive(true);
 
-                if (holeVisual != null)
-                    holeVisual.SetActive(true);
-
-                break;
-
-
-            case BoltState.Half:
-
-                boltImage.enabled = true;
-                boltImage.sprite = halfBoltSprite;
-
-                if (holeVisual != null)
-                    holeVisual.SetActive(true);
+                boltImage.gameObject.SetActive(true);
+                boltImage.sprite = insertedBoltSprite;
 
                 break;
 
 
-            case BoltState.Missing:
+            case BoltState.HalfInserted:
 
-                boltImage.enabled = false;
+                holeImage.SetActive(true);
 
-                if (holeVisual != null)
-                    holeVisual.SetActive(true);
+                boltImage.gameObject.SetActive(true);
+                boltImage.sprite = halfInsertedBoltSprite;
+
+                break;
+
+
+            case BoltState.Empty:
+
+                holeImage.SetActive(true);
+
+                boltImage.gameObject.SetActive(false);
 
                 break;
         }
+    }
+
+    // -----------------------------
+    // 반쯤 나온 나사 클릭
+    // -----------------------------
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (currentState != BoltState.HalfInserted)
+            return;
+
+        SetState(BoltState.Inserted);
+
+        manager.NotifyBoltChanged();
+    }
+
+    // -----------------------------
+    // 바닥 나사를 빈 구멍에 드롭
+    // -----------------------------
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (currentState != BoltState.Empty)
+            return;
+
+        if (eventData.pointerDrag == null)
+            return;
+
+        DraggableBolt draggableBolt =
+            eventData.pointerDrag.GetComponent<DraggableBolt>();
+
+        if (draggableBolt == null)
+            return;
+
+        if (draggableBolt.IsUsed)
+            return;
+
+        // 바닥 나사 제거
+        draggableBolt.UseBolt();
+
+        // 빈 구멍 → 정상 나사
+        SetState(BoltState.Inserted);
+
+        manager.NotifyBoltChanged();
     }
 }
