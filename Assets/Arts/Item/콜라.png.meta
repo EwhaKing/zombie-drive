@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 734db8a471293cc44ab62db575acc48f
+guid: ffe391737e8d71846b49393894ea39ff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8235982434522774092
-    second: "\uC2A4\uD06C\uB9B0\uC0F7 2026-07-07 215648_0"
+      213: -2319776364460163191
+    second: "\uCF5C\uB77C_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -122,30 +122,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC2A4\uD06C\uB9B0\uC0F7 2026-07-07 215648_0"
+      name: "\uCF5C\uB77C_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 797
-        height: 522
+        x: 12
+        y: 16
+        width: 273
+        height: 378
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4a361a53661c4270800000000000000
-      internalID: 8235982434522774092
+      spriteID: 98f310eefaf7ecfd0800000000000000
+      internalID: -2319776364460163191
       vertices: []
       indices: 
       edges: []
@@ -174,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uC2A4\uD06C\uB9B0\uC0F7 2026-07-07 215648_0": 8235982434522774092
+      "\uCF5C\uB77C_0": -2319776364460163191
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
