@@ -15,7 +15,7 @@ public class ChargingMinigameManager : MonoBehaviour
 
     void Awake()
     {
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        
     }
 
     void Update()
@@ -51,7 +51,6 @@ public class ChargingMinigameManager : MonoBehaviour
     // "확인" 버튼에 연결할 함수
     public void OnConfirmClick()
     {
-        Screen.orientation = ScreenOrientation.Portrait;
         SceneManager.LoadScene("Farming");
     }
 }
