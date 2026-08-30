@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RepairShop.unity
     guid: adff3054c850ba54cbe821fcc16b3fba
+  - enabled: 1
+    path: Assets/Scenes/FurnitureFusion.unity
+    guid: 7beb9a5184ac97e42a8e9b6cebaaf945
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
