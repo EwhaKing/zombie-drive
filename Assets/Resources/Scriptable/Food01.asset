@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Food01
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Food01
-  icon: {fileID: 5291669958729229273, guid: ff61acd58cd178544981a080f71c0eef, type: 3}
+  icon: {fileID: -1804312002486614975, guid: e5e4b922e5b9f1a4889307e1de17240b, type: 3}
+  description: "\uACE0\uCD94\uCC38\uCE58\uC774\uB2E4.\n\uBC30\uACE0\uD514 +20"
   category: 0
   weight: 31
   itemScale: 0.7
+  hungerRestoreAmount: 20

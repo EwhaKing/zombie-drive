@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5778252027782560552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5850068985311129387}
+  - component: {fileID: 1680038956092390142}
+  - component: {fileID: 3441830323560571413}
+  - component: {fileID: 479842848014489382}
+  - component: {fileID: 1633537778742909822}
+  - component: {fileID: 3907171586118991197}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5850068985311129387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778252027782560552}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 651.2838, y: 1323.0748, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1680038956092390142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778252027782560552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6acfa4a55ad59f74a84c7b9daf3baa63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneController
+--- !u!114 &3441830323560571413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778252027782560552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d65242826852b64a9eec947fa3427a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DrivingManager
+  currentDay: 1
+  popupInterval: 5
+  maxHp: 100
+  currentHp: 100
+  hpCostPerFarm: 20
+  farmedCountToday: 0
+  destinationScenes:
+  - StoreGame
+  - ChargingMinigame
+  - RepairShop
+  isPopupActive: 0
+--- !u!114 &479842848014489382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778252027782560552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22e4381130e68a4b9af93dcf2fc9332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+--- !u!114 &1633537778742909822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778252027782560552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeafe85cd4e3503438ead4a75f924659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenOrientationSetter
+  orientationSettings:
+  - sceneName: DrivingScene
+    orientation: 1
+  - sceneName: StoreGame
+    orientation: 3
+  - sceneName: ChargingMinigame
+    orientation: 3
+  - sceneName: RepairShop
+    orientation: 3
+  defaultOrientation: 1
+--- !u!114 &3907171586118991197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778252027782560552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a9de53aa37fc14b8c1caa58d216348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
+  maxSleep: 100
+  maxHunger: 100
+  maxHealth: 100
+  currentSleep: 100
+  currentHunger: 100
+  currentHealth: 100
+  sleepDepletionRate: 1
+  hungerDepletionRate: 1.5
+  healthDamageInterval: 600
+  healthDamageAmount: 10
+  sleepSlider: {fileID: 0}
+  hungerSlider: {fileID: 0}
+  healthSlider: {fileID: 0}
