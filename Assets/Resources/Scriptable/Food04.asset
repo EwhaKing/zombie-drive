@@ -17,5 +17,5 @@ MonoBehaviour:
   description: "\uCE78\uCD08\uC774\uB2E4.\n\uBC30\uACE0\uD514 + 10"
   category: 0
   weight: 31
-  itemScale: 0.5
+  itemScale: 0.3
   hungerRestoreAmount: 10

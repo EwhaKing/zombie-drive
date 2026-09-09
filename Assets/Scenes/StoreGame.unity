@@ -3325,7 +3325,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1045329291}
         m_TargetAssemblyTypeName: FridgeMiniGameManager, Assembly-CSharp
         m_MethodName: ExitCloseup
         m_Mode: 1
