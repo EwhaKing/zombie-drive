@@ -1149,6 +1149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RepairShopScreenManager
   whitePanel: {fileID: 0}
   wheelMiniGame: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &1069516412
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,6 +3285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RepairShopScreenManager
   whitePanel: {fileID: 1069516412}
   wheelMiniGame: {fileID: 1311957996}
+  gameManager: {fileID: 974533433}
 --- !u!4 &2028605655
 Transform:
   m_ObjectHideFlags: 0
