@@ -83,6 +83,12 @@ public class BoltSlot : MonoBehaviour,
     // -----------------------------
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (manager == null ||
+    !manager.IsPhaseActive)
+        {
+            return;
+        }
+
         if (currentState != BoltState.HalfInserted)
             return;
 
@@ -96,6 +102,12 @@ public class BoltSlot : MonoBehaviour,
     // -----------------------------
     public void OnDrop(PointerEventData eventData)
     {
+        if (manager == null ||
+    !manager.IsPhaseActive)
+        {
+            return;
+        }
+
         if (currentState != BoltState.Empty)
             return;
 
