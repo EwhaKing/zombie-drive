@@ -218,12 +218,13 @@ public class RepairShopGameManager : MonoBehaviour
     }
 
 
-    // =====================================
-    // 최종 결과 계산
-    // =====================================
     public void FinishRepair()
     {
         timerRunning = false;
+
+        // =====================================
+        // 1~3단계 완성도의 평균
+        // =====================================
 
         FinalCompletion01 =
             (
@@ -233,41 +234,41 @@ public class RepairShopGameManager : MonoBehaviour
             ) / 3f;
 
 
+        float finalPercent =
+            FinalCompletion01 * 100f;
+
+
         Debug.Log(
-            "===== 정비 완료 ====="
+            "1단계 완성도 : "
+            + (stage1Completion * 100f).ToString("F1")
+            + "%"
         );
 
         Debug.Log(
-            "1단계: " +
-            (stage1Completion * 100f).ToString("F1") +
-            "%"
+            "2단계 완성도 : "
+            + (stage2Completion * 100f).ToString("F1")
+            + "%"
         );
 
         Debug.Log(
-            "2단계: " +
-            (stage2Completion * 100f).ToString("F1") +
-            "%"
+            "3단계 완성도 : "
+            + (stage3Completion * 100f).ToString("F1")
+            + "%"
         );
 
         Debug.Log(
-            "3단계: " +
-            (stage3Completion * 100f).ToString("F1") +
-            "%"
-        );
-
-        Debug.Log(
-            "최종 완성도: " +
-            FinalCompletionPercent.ToString("F1") +
-            "%"
+            "최종 완성도 : "
+            + finalPercent.ToString("F1")
+            + "%"
         );
 
 
         if (statusText != null)
         {
             statusText.text =
-                "최종 완성도 : " +
-                FinalCompletionPercent.ToString("F1") +
-                "%";
+                "최종 완성도 : "
+                + finalPercent.ToString("F1")
+                + "%";
         }
     }
 

@@ -439,32 +439,25 @@ public class WheelRemovalMiniGame : MonoBehaviour,
 
     private void UpdateGauge()
     {
-        float progress =
-            Completion01;
+        float progress = 0f;
 
-
-        // -----------------------------
-        // 화면의 원형 게이지
-        // -----------------------------
-
-        if (gaugeFill != null)
+        if (requiredRotation > 0f)
         {
-            gaugeFill.fillAmount =
-                progress;
+            progress = Mathf.Clamp01(
+                accumulatedRotation / requiredRotation
+            );
         }
 
+        // 게이지
+        if (gaugeFill != null)
+        {
+            gaugeFill.fillAmount = progress;
+        }
 
-        // -----------------------------
-        // 전체 게임 관리자에게
-        // 현재 진행도 전달
-        // -----------------------------
-
+        // 진행도 기록
         if (gameManager != null)
         {
-            gameManager
-                .UpdateCurrentProgress(
-                    progress
-                );
+            gameManager.UpdateCurrentProgress(progress);
         }
     }
 

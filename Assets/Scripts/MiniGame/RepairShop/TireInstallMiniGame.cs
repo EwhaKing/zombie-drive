@@ -319,14 +319,14 @@ public class TireInstallMiniGame : MonoBehaviour,
         float progress = Completion01;
 
 
-        // 원형 게이지
+        // 게이지 증가
         if (gaugeFill != null)
         {
             gaugeFill.fillAmount = progress;
         }
 
 
-        // 진행될수록 타이어가 선명해짐
+        // 게이지가 찰수록 타이어 불투명
         if (newTireCanvasGroup != null)
         {
             newTireCanvasGroup.alpha =
@@ -338,7 +338,7 @@ public class TireInstallMiniGame : MonoBehaviour,
         }
 
 
-        // RepairShopGameManager에 진행도 전달
+        // 진행도 기록
         if (gameManager != null)
         {
             gameManager.UpdateCurrentProgress(

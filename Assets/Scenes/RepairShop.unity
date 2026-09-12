@@ -1128,9 +1128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ba7fcbeb63b05b488495648106edf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RepairShopGameManager
-  stage1TimeLimit: 10
-  stage2TimeLimit: 10
-  stage3TimeLimit: 10
+  stage1TimeLimit: 30
+  stage2TimeLimit: 60
+  stage3TimeLimit: 30
   statusText: {fileID: 1386599480}
   wheelMiniGame: {fileID: 1311957996}
   boltPhaseManager: {fileID: 1963182966}
@@ -1147,9 +1147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426dfad5be4b87647909cad3561e2fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RepairShopScreenManager
-  whitePanel: {fileID: 0}
-  wheelMiniGame: {fileID: 0}
-  gameManager: {fileID: 0}
+  whitePanel: {fileID: 1069516412}
+  wheelMiniGame: {fileID: 1311957996}
+  gameManager: {fileID: 974533433}
 --- !u!1 &1069516412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1069516413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,7 +1857,7 @@ MonoBehaviour:
   boltPhaseRoot: {fileID: 1963182964}
   boltPhaseManager: {fileID: 1963182966}
   tireInstallMiniGame: {fileID: 1675399215}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 974533433}
 --- !u!114 &1311957997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2086,7 +2086,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cbfd7699d6307d24ba4b4ff692faafb3, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2153,7 +2153,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1386599481
@@ -2721,7 +2721,7 @@ MonoBehaviour:
   requiredRotation: 720
   allowCounterClockwiseDecrease: 0
   startAlpha: 0.25
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 974533433}
 --- !u!1 &1735725897
 GameObject:
   m_ObjectHideFlags: 0
@@ -3177,7 +3177,7 @@ MonoBehaviour:
   looseBoltPrefab: {fileID: 3550464126337397364, guid: 8a63b5493c4d98545bb44ff35a7599a6, type: 3}
   floorRail: {fileID: 1652493772}
   tireInstallMiniGame: {fileID: 1675399215}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 974533433}
 --- !u!1 &1987669445
 GameObject:
   m_ObjectHideFlags: 0
