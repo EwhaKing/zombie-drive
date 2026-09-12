@@ -14,7 +14,7 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
-    [TextArea] public string description; // [추가] 아이템 설명글
+    [TextArea] public string description;
     public ItemCategory category; 
     public float weight; 
     public float itemScale = 1.0f;

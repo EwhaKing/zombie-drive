@@ -51,7 +51,7 @@ public class FridgeMiniGameManager : MonoBehaviour
         {
             if (item == null) return;
 
-            // [수정된 부분] 메인 씬과 공유되는 싱글톤 인벤토리 매니저에 아이템 저장
+            // 메인 씬과 공유되는 싱글톤 인벤토리 매니저에 아이템 저장
             if (InventoryManager.Instance != null)
             {
                 InventoryManager.Instance.AddItem(item, count);
