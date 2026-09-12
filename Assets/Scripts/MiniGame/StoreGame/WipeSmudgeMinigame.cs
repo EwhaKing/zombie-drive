@@ -19,7 +19,7 @@ public class WipeSmudgeMinigame : MonoBehaviour
 
     [Header("아이템 생성 확률 설정")]
     [Range(0f, 1f)]
-    public float itemSpawnChance = 0.3f; // 얼룩 밑에 아이템이 생성될 확률 (0.3f = 30%)
+    public float itemSpawnChance = 0.3f; // 얼룩 밑에 아이템이 생성될 확률 (0.3 = 30%)
 
     private List<GameObject> activeSmudges = new List<GameObject>(); 
     private Dictionary<GameObject, float> wipeProgress = new Dictionary<GameObject, float>(); 
@@ -38,7 +38,7 @@ public class WipeSmudgeMinigame : MonoBehaviour
         isInitialized = true;
     }
 
-    // 얼룩 및 아이템을 생성하고 배치하는 핵심 메서드
+    // 얼룩 및 아이템을 생성하고 배치
     public void ResetAndSpawnSmudges()
     {
         // 기존 얼룩 오브젝트 및 데이터 초기화
@@ -49,7 +49,7 @@ public class WipeSmudgeMinigame : MonoBehaviour
         if (smudgePrefab == null || spawnArea == null) return;
 
         Rect areaRect = spawnArea.rect;
-        int count = Random.Range(15, 21); // 얼룩 생성 개수 (15개 ~ 20개)
+        int count = Random.Range(15, 21); // 얼룩 생성 개수 (15 ~ 20개)
 
         List<Vector2> spawnedPositions = new List<Vector2>();
 

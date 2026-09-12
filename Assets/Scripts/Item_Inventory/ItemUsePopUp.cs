@@ -31,10 +31,10 @@ public class ItemUsePopUp : MonoBehaviour
             itemIcon.sprite = item.icon;
             itemIcon.enabled = true;
 
-            // [핵심] 원본 이미지 비율을 유지하면서 영역 안에 맞춤
+            // 원본 이미지 비율을 유지하면서 영역 안에 맞춤
             itemIcon.preserveAspect = true; 
 
-            // 이미지 크기가 영역을 넘어가지 않도록 정방형 고정 (원하는 크기로 조절)
+            // 이미지 크기가 영역을 넘어가지 않도록 고정 (원하는 크기로 조절)
             RectTransform rect = itemIcon.GetComponent<RectTransform>();
             if (rect != null)
             {

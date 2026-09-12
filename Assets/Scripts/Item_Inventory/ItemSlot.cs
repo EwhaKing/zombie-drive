@@ -26,7 +26,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 RectTransform rect = iconImage.GetComponent<RectTransform>();
                 if (rect != null)
                 {
-                    rect.sizeDelta = new Vector2(100f, 100f); // 원하는 기본 크기
+                    rect.sizeDelta = new Vector2(100f, 100f); // 기본 크기 설정 
                     float scale = item.itemScale;
                     rect.localScale = new Vector3(scale, scale, 1.0f);
                 }
@@ -73,7 +73,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
         if (ItemUsePopUp.Instance == null)
         {
-            Debug.LogError("ItemUsePopUp.Instance가 null입니다! 팝업 오브젝트나 스크립트를 확인하세요.");
+            Debug.LogError("ItemUsePopUp.Instance가 null, 팝업 오브젝트나 스크립트를 확인 필요");
             return;
         }
 

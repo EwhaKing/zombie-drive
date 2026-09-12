@@ -50,7 +50,7 @@ public class DragPileMinigame : MonoBehaviour, IDragHandler
             }
         }
 
-        // [핵심] 더미(dragTarget)가 아이템보다 항상 위에 오도록 레이어 순서 맨 위로 변경
+        // 더미가 아이템보다 항상 위에 오도록 레이어 순서 맨 위로 변경
         if (dragTarget != null)
         {
             dragTarget.SetAsLastSibling();

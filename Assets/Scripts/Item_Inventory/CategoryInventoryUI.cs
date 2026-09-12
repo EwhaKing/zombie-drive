@@ -35,7 +35,6 @@ public class CategoryInventoryUI : MonoBehaviour
                 Transform slotTF = slotContainer.GetChild(slotIndex);
                 ItemSlot slotScript = slotTF.GetComponent<ItemSlot>();
 
-                // [핵심] ItemSlot 컴포넌트에 데이터 넘겨주기
                 if (slotScript != null)
                 {
                     slotScript.SetItem(pair.Key, pair.Value);
@@ -55,7 +54,7 @@ public class CategoryInventoryUI : MonoBehaviour
             ItemSlot slotScript = slotTF.GetComponent<ItemSlot>();
             if (slotScript != null)
             {
-                slotScript.ClearSlot(); // 각 슬롯의 데이터 초기화
+                slotScript.ClearSlot();
             }
         }
     }

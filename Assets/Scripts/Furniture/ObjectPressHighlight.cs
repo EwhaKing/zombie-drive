@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class ObjectPressHighlight :
     MonoBehaviour,
     IPointerDownHandler,
     IPointerUpHandler,
-    IPointerExitHandler
+    IPointerExitHandler,
+    IPointerClickHandler
 {
     [SerializeField] private GameObject highlightObject;
+
+    [SerializeField] private UnityEvent onClick;
 
     private void Awake()
     {
@@ -39,5 +43,10 @@ public class ObjectPressHighlight :
         {
             highlightObject.SetActive(false);
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        onClick?.Invoke();
     }
 }
