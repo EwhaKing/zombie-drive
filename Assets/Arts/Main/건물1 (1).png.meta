@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 26d4788ef2ffdf34db2889acd0251c6b
+guid: 94deb1df6111de541bc9fb52b20c1da2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6977392358924282356
-    second: "\uC608\uC2DC\uBC30\uACBD\uD654\uBA742_0"
+      213: 1803112752934047785
+    second: "\uAC74\uBB3C1 (1)_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -97,19 +97,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,7 +110,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -139,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC608\uC2DC\uBC30\uACBD\uD654\uBA742_0"
+      name: "\uAC74\uBB3C1 (1)_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 800
-        height: 450
+        width: 191
+        height: 446
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c061bcb0e925b2f90800000000000000
-      internalID: -6977392358924282356
+      spriteID: 9205c98de71f50910800000000000000
+      internalID: 1803112752934047785
       vertices: []
       indices: 
       edges: []
@@ -174,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uC608\uC2DC\uBC30\uACBD\uD654\uBA742_0": -6977392358924282356
+      "\uAC74\uBB3C1 (1)_0": 1803112752934047785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
