@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 479842848014489382}
   - component: {fileID: 1633537778742909822}
   - component: {fileID: 3907171586118991197}
+  - component: {fileID: 8154654166109052647}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -130,3 +131,20 @@ MonoBehaviour:
   sleepSlider: {fileID: 0}
   hungerSlider: {fileID: 0}
   healthSlider: {fileID: 0}
+--- !u!114 &8154654166109052647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778252027782560552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3d46c0c029df749b9439d70719ce14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GPSManager
+  totalDistanceKM: 100
+  remainingDistanceKM: 100
+  speedKmPerHour: 50
+  distancePerDay: 33.3
+  isDriving: 1

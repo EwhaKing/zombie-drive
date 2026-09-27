@@ -5,16 +5,22 @@ public class ReturnToDrivingButton : MonoBehaviour
 {
     public void ReturnToDriving()
     {
-        // Á¤»óÀûÀ¸·Î DrivingScene¿¡¼­ ³Ñ¾î¿Â °æ¿ì
+        // 1. íŒŒë°/ë³µê·€ ì‹œ 10~20km ëœë¤ ê±°ë¦¬ ì°¨ê° ì‹¤í–‰
+        if (GPSManager.Instance != null)
+        {
+            GPSManager.Instance.ReduceDistanceOnReturn();
+        }
+
+        // 2. DrivingSceneìœ¼ë¡œ ë³µê·€ ì²˜ë¦¬
         if (DrivingManager.Instance != null)
         {
             DrivingManager.Instance.ReturnFromDestination();
         }
         else
         {
-            // ÇØ´ç ¹Ì´Ï°ÔÀÓ ¾À¸¸ ´Üµ¶À¸·Î ½ÇÇàÇØ¼­ Å×½ºÆ®ÇßÀ» °æ¿ì
+            // DrivingManagerê°€ ì—†ëŠ” ë‹¨ë… í…ŒìŠ¤íŠ¸ í™˜ê²½ì¼ ê²½ìš° Direct ì”¬ ì´ë™
             Debug.LogWarning(
-                "DrivingManager°¡ ¾ø½À´Ï´Ù. Å×½ºÆ®¿ëÀ¸·Î DrivingSceneÀ¸·Î Á÷Á¢ ÀÌµ¿ÇÕ´Ï´Ù."
+                "DrivingManagerê°€ ì—†ìŠµë‹ˆë‹¤. í…ŒìŠ¤íŠ¸ìš©ìœ¼ë¡œ DrivingSceneìœ¼ë¡œ ì§ì ‘ ì´ë™í•©ë‹ˆë‹¤."
             );
 
             SceneManager.LoadScene("DrivingScene");

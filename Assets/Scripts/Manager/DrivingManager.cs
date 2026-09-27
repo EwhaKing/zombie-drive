@@ -160,12 +160,28 @@ public class DrivingManager : MonoBehaviour
         ReturnFromDestination(); 
     }
 
+
+
+    private void SyncGPSToUI()
+    {
+        // 씬 내에 있는 GPSUIController를 찾아 currentDay 값 업데이트
+        GPSUIController gpsUI = FindFirstObjectByType<GPSUIController>();
+        if (gpsUI != null)
+        {
+            gpsUI.currentDay = this.currentDay;
+        }
+    }
+
+
+
     private void OnReturnedToDrivingScene()
     {
         farmedCountToday++; 
         timer = 0f; 
 
         Debug.Log($"DrivingScene 복귀 / 오늘 내린 횟수 : {farmedCountToday} / {REQUIRED_FARM_COUNT}"); 
+
+        SyncGPSToUI();
 
         if (farmedCountToday >= REQUIRED_FARM_COUNT)
         {
@@ -185,5 +201,6 @@ public class DrivingManager : MonoBehaviour
         isPopupActive = false; 
 
         Debug.Log("다음 날 시작! Day " + currentDay); 
+        SyncGPSToUI();
     }
 }
