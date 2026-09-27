@@ -534,6 +534,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81391803}
   m_CullTransparentMesh: 1
+--- !u!1 &91196162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91196167}
+  - component: {fileID: 91196165}
+  - component: {fileID: 91196164}
+  - component: {fileID: 91196166}
+  - component: {fileID: 91196163}
+  m_Layer: 0
+  m_Name: OpenBottomButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!225 &91196163
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91196162}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &91196164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91196162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -4092731579766281498, guid: e47c340fcef05094db04f0bb0dd5a1eb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &91196165
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91196162}
+  m_CullTransparentMesh: 1
+--- !u!114 &91196166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91196162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 91196164}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!224 &91196167
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91196162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 503163097}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: -930}
+  m_SizeDelta: {x: 220, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &116510015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,6 +1457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 308203524}
   - component: {fileID: 308203525}
+  - component: {fileID: 308203526}
   m_Layer: 0
   m_Name: ObjectLayer
   m_TagString: Untagged
@@ -1358,6 +1492,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308203523}
   m_CullTransparentMesh: 1
+--- !u!114 &308203526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308203523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 244ddd0e79ce6a242a21247e8f4fb172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrontWindowObjectSpawner
+  objectPrefab: {fileID: 3624376955393151632, guid: 834206f5c2bdee242b4e635f38038265, type: 3}
+  sprites:
+  - {fileID: 1803112752934047785, guid: 94deb1df6111de541bc9fb52b20c1da2, type: 3}
+  - {fileID: -7746815442547137430, guid: 5115501587fbf8e4eb3b8f2df01c554e, type: 3}
+  - {fileID: 8931619184963993754, guid: 090cf7ff6c4e08844b40ccea0b90483b, type: 3}
+  minSpawnInterval: 2
+  maxSpawnInterval: 5
+  startY: 80
+  minStartX: -60
+  maxStartX: 60
+  endY: -250
+  horizontalSpread: 2
+  startScale: 0.15
+  endScale: 1.2
+  minDuration: 3
+  maxDuration: 5
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &308383643
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,6 +2501,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4265616226635951065, guid: 823c8898ac346814a8b8bb6c7da356e8, type: 3}
+      propertyPath: m_HandleRect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265616226635951065, guid: 823c8898ac346814a8b8bb6c7da356e8, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4351097429629736815, guid: 823c8898ac346814a8b8bb6c7da356e8, type: 3}
       propertyPath: m_text
       value: 'X
@@ -3124,6 +3318,7 @@ RectTransform:
   - {fileID: 2207230652267886502}
   - {fileID: 593088615}
   - {fileID: 6276056941479429954}
+  - {fileID: 91196167}
   - {fileID: 1605343052}
   - {fileID: 2008791075}
   - {fileID: 1028741676}
@@ -5013,6 +5208,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 1803112752934047785, guid: 94deb1df6111de541bc9fb52b20c1da2, type: 3}
   - {fileID: -7746815442547137430, guid: 5115501587fbf8e4eb3b8f2df01c554e, type: 3}
+  - {fileID: 8931619184963993754, guid: 090cf7ff6c4e08844b40ccea0b90483b, type: 3}
   moveRight: 1
   minSpawnInterval: 2
   maxSpawnInterval: 5
@@ -6949,9 +7145,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 579121362}
+  - {fileID: 2124436325}
   - {fileID: 530211741}
   - {fileID: 1805544006}
-  - {fileID: 2124436325}
   m_Father: {fileID: 45956873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8398,7 +8594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1728778705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8514,8 +8710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BottomUISlideController
   bottomPanel: {fileID: 6276056941479429954}
   closeButton: {fileID: 1728778706}
-  openButton: {fileID: 0}
-  openButtonCanvasGroup: {fileID: 0}
+  openButton: {fileID: 91196166}
+  openButtonCanvasGroup: {fileID: 91196163}
   slideDuration: 0.35
   slideDistance: 0
   extraHideDistance: 60
@@ -10306,8 +10502,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2124436325}
   - component: {fileID: 2124436326}
+  - component: {fileID: 2124436327}
   m_Layer: 0
-  m_Name: ZombieLayer
+  m_Name: ObjectLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10340,6 +10537,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124436324}
   m_CullTransparentMesh: 1
+--- !u!114 &2124436327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124436324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e90048b7d9005c4a90a365a86d8258a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideWindowObjectSpawner
+  objectPrefab: {fileID: 3624376955393151632, guid: 7ff60cc9331f3264e93ba9fa720cedad, type: 3}
+  sprites:
+  - {fileID: 1803112752934047785, guid: 94deb1df6111de541bc9fb52b20c1da2, type: 3}
+  - {fileID: -7746815442547137430, guid: 5115501587fbf8e4eb3b8f2df01c554e, type: 3}
+  - {fileID: 8931619184963993754, guid: 090cf7ff6c4e08844b40ccea0b90483b, type: 3}
+  moveRight: 0
+  minSpawnInterval: 2
+  maxSpawnInterval: 5
+  minSpeed: 120
+  maxSpeed: 170
+  minY: -100
+  maxY: 100
+  minScale: 0.7
+  maxScale: 1.1
+  spawnPadding: 100
 --- !u!1 &2128456514
 GameObject:
   m_ObjectHideFlags: 0
@@ -11029,6 +11253,10 @@ PrefabInstance:
     - target: {fileID: 434867826189504336, guid: 837387f408b2ea14bba073426eeda95c, type: 3}
       propertyPath: m_Name
       value: BottomUIPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 834028002771640065, guid: 837387f408b2ea14bba073426eeda95c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1244050250297264727, guid: 837387f408b2ea14bba073426eeda95c, type: 3}
       propertyPath: m_AnchorMax.y
