@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 8dbd5dd029f9c02408cf72b44f639f40
+guid: 0f40b53296fb7294d9b1f2ec0386bf83
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5149813599846080425
-    second: HOME_0
+      213: 3226548063769678364
+    second: HOME 1_0
   - first:
-      213: -6294996428798660045
-    second: HOME_1
+      213: 2895811878725305974
+    second: HOME 1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,45 +129,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HOME_0
+      name: HOME 1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 39
-        width: 135
-        height: 141
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 750e2b9d0df2888b0800000000000000
-      internalID: -5149813599846080425
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HOME_1
-      rect:
-        serializedVersion: 2
-        x: 24
         y: 0
-        width: 86
-        height: 32
+        width: 135
+        height: 180
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3327a1fa91ea3a8a0800000000000000
-      internalID: -6294996428798660045
+      spriteID: c1257b77e5007cc20800000000000000
+      internalID: 3226548063769678364
       vertices: []
       indices: 
       edges: []
@@ -176,7 +154,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8373e1b83ba87d5439d17bcb291fb440
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +164,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HOME_0: -5149813599846080425
-      HOME_1: -6294996428798660045
+      HOME 1_0: 3226548063769678364
+      HOME 1_1: 2895811878725305974
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
