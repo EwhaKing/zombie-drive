@@ -767,4 +767,19 @@ public class AttackPathController : MonoBehaviour
         // 선보다 앞에 표시
         startMarker.SetAsLastSibling();
     }
+
+    public void CancelPreview()
+    {
+        // 1초 경로 표시 코루틴 중지
+        StopAllCoroutines();
+
+        // 현재 화면의 경로 / 화살표 제거
+        ClearPathVisual();
+
+        // START 표시 제거
+        if (startMarker != null)
+        {
+            startMarker.gameObject.SetActive(false);
+        }
+    }
 }

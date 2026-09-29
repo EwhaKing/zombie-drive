@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -35,6 +36,19 @@ public class ZombieAttackGameManager : MonoBehaviour
     public bool IsGameRunning { get; private set; }
 
 
+    // =========================
+    // 게임 종료 이벤트
+    // true  = 생존 성공
+    // false = 생존 실패
+    // =========================
+
+    public event Action<bool> GameEnded;
+
+
+    // =========================
+    // Unity 기본 함수
+    // =========================
+
     private void Start()
     {
         StartGame();
@@ -45,11 +59,9 @@ public class ZombieAttackGameManager : MonoBehaviour
     {
         if (!IsGameRunning)
             return;
-        
-        // =========================
-        // 타이머 감소
-        // =========================
 
+
+        // 타이머 감소
         remainingTime -= Time.deltaTime;
 
 
@@ -122,16 +134,15 @@ public class ZombieAttackGameManager : MonoBehaviour
     public void LoseLife()
     {
         // 이미 게임이 끝났으면
-        // 더 이상 목숨 감소하지 않음
+        // 목숨 감소하지 않음
         if (!IsGameRunning)
             return;
 
 
-        // 목숨 감소
         CurrentLives--;
 
 
-        // 0 아래로 내려가는 것 방지
+        // 0 아래로 내려가지 않도록
         CurrentLives =
             Mathf.Max(CurrentLives, 0);
 
@@ -142,11 +153,10 @@ public class ZombieAttackGameManager : MonoBehaviour
         );
 
 
-        // UI 갱신
         UpdateHeartUI();
 
 
-        // 목숨이 전부 사라졌다면
+        // 목숨이 모두 사라짐
         if (CurrentLives <= 0)
         {
             IsGameRunning = false;
@@ -174,8 +184,6 @@ public class ZombieAttackGameManager : MonoBehaviour
                 continue;
 
 
-            // 현재 목숨보다
-            // 작은 번호의 하트만 표시
             heartObjects[i].SetActive(
                 i < CurrentLives
             );
@@ -184,7 +192,7 @@ public class ZombieAttackGameManager : MonoBehaviour
 
 
     // =========================
-    // 30초 종료
+    // 30초 생존 성공
     // =========================
 
     private void OnTimerEnd()
@@ -193,24 +201,24 @@ public class ZombieAttackGameManager : MonoBehaviour
             "30초 생존 성공!"
         );
 
-        // 나중에
-        // 승리 처리 연결
+
+        // true = 생존 성공
+        GameEnded?.Invoke(true);
     }
 
 
     // =========================
-    // 게임 오버
+    // 목숨 0 → 게임 오버
     // =========================
 
     private void OnGameOver()
     {
         Debug.Log(
-            "목숨을 모두 잃었습니다. GAME OVER!"
+            "생존 실패! GAME OVER!"
         );
 
-        // 나중에
-        // Game Over UI
-        // 다른 기능 연동
-        // 등을 여기서 처리
+
+        // false = 생존 실패
+        GameEnded?.Invoke(false);
     }
 }

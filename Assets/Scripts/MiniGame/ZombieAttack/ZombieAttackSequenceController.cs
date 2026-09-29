@@ -33,6 +33,11 @@ public class ZombieAttackSequenceController : MonoBehaviour
 
     private void OnEnable()
     {
+        if (gameManager != null)
+        {
+            gameManager.GameEnded += OnGameEnded;
+        }
+
         if (attackPathController != null)
         {
             attackPathController.PreviewFinished +=
@@ -53,6 +58,11 @@ public class ZombieAttackSequenceController : MonoBehaviour
 
     private void OnDisable()
     {
+        if (gameManager != null)
+        {
+            gameManager.GameEnded -= OnGameEnded;
+        }
+
         if (attackPathController != null)
         {
             attackPathController.PreviewFinished -=
@@ -221,5 +231,36 @@ public class ZombieAttackSequenceController : MonoBehaviour
 
 
         nextRoundCoroutine = null;
+    }
+
+    private void OnGameEnded(bool survived)
+    {
+        Debug.Log(
+            survived
+            ? "게임 종료 처리 : 생존 성공"
+            : "게임 종료 처리 : 생존 실패"
+        );
+
+        // 이 SequenceController에서 실행 중이던
+        // 공격 대기 / 결과 대기 / 다음 라운드 등을 모두 중지
+        StopAllCoroutines();
+
+        // 플레이어 터치 판정 즉시 종료
+        if (touchInputController != null)
+        {
+            touchInputController.CancelInputWindow();
+        }
+
+        // 현재 표시 중이던 공격 경로도 제거
+        if (attackPathController != null)
+        {
+            attackPathController.CancelPreview();
+        }
+
+        // 현재 좀비도 즉시 제거
+        if (zombieVisualController != null)
+        {
+            zombieVisualController.HideZombie();
+        }
     }
 }
