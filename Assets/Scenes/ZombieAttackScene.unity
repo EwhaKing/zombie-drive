@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 589802096}
   - component: {fileID: 589802098}
   - component: {fileID: 589802097}
+  - component: {fileID: 589802099}
   m_Layer: 5
   m_Name: TouchArea
   m_TagString: Untagged
@@ -409,10 +410,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1604135321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &589802097
 MonoBehaviour:
@@ -452,6 +453,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589802095}
   m_CullTransparentMesh: 1
+--- !u!114 &589802099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589802095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa03d96a038f6624a93fef8f6cf4230f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TouchPathInputController
+  attackPathController: {fileID: 1832238014}
+  pathCoordinateArea: {fileID: 1832238011}
+  touchReceiverImage: {fileID: 589802097}
+  reactionTimeLimit: 20
+  maxDrawDuration: 20
+  startTolerance: 200
+  pathTolerance: 300
+  cornerTolerance: 300
+  finishTolerance: 300
+  segmentCompleteThreshold: 0.85
+  backwardTolerance: 0.2
+  maxConsecutiveOffPathSamples: 6
+  sampleSpacing: 20
 --- !u!1 &699122969
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,8 +916,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ba3d1649d496949acbc0353b4a4430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieAttackSequenceController
+  gameManager: {fileID: 1108618752}
   attackPathController: {fileID: 1832238014}
   zombieVisualController: {fileID: 1417330012}
+  touchInputController: {fileID: 589802099}
+  nextRoundDelay: 0.4
 --- !u!1 &1249349629
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,13 +972,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5553464662862001200, guid: 440cf20b810b1684c9faca8b14f165a8, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1524,7 +1553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
