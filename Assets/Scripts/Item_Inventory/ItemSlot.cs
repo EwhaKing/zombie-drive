@@ -7,6 +7,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Image iconImage;
     public TMPro.TextMeshProUGUI quantityText;
 
+
+    // [추가] 슬롯 테두리와 아이콘 사이 여백 (너무 꽉 차 보이면 올리세요)
+    public float iconPadding = 6f;
+
+
+
     private ItemData currentItem;
     private int itemCount;
 
@@ -23,20 +29,26 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 iconImage.enabled = true;
                 iconImage.preserveAspect = true;
 
-                RectTransform rect = iconImage.GetComponent<RectTransform>();
-                if (rect != null)
-                {
-                    rect.sizeDelta = new Vector2(100f, 100f); // 기본 크기 설정 
-                    float scale = item.itemScale;
-                    rect.localScale = new Vector3(scale, scale, 1.0f);
-                }
+                RectTransform rect = iconImage.rectTransform;
+
+                // [변경] 고정 sizeDelta(100x100) 삭제 → 슬롯 크기에 맞춰 꽉 채우도록 stretch 앵커 사용
+                // 슬롯이 어떤 크기·해상도여도 아이콘이 슬롯 안에 들어옴
+                rect.anchorMin = Vector2.zero;
+                rect.anchorMax = Vector2.one;
+                rect.pivot = new Vector2(0.5f, 0.5f);
+                rect.offsetMin = new Vector2(iconPadding, iconPadding);   // 왼쪽/아래 여백
+                rect.offsetMax = new Vector2(-iconPadding, -iconPadding); // 오른쪽/위 여백
+
+                // [변경] itemScale 대신 슬롯 전용 slotScale 사용
+                // 슬롯 UI에서 아이템마다 크기를 따로 조절 가능 (냉장고의 itemScale에 영향 없음)
+                float scale = Mathf.Clamp(item.slotScale, 0.1f, 1f);
+                rect.localScale = new Vector3(scale, scale, 1.0f);
             }
 
             if (quantityText != null)
             {
                 quantityText.gameObject.SetActive(true);
-                // 1개 이상이면 수량 출력
-                quantityText.text = count.ToString(); 
+                quantityText.text = count.ToString();
             }
         }
         else
