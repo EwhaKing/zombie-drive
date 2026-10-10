@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa834c7fd3e8fee4881ec5ba6ff260c8, type: 3}
   m_Name: Food07
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: Food04
-  icon: {fileID: 4235866625440670348, guid: 713d7ba8cc200d54eaf6db83a1407159, type: 3}
+  itemName: Food07
+  icon: {fileID: 21300000, guid: 713d7ba8cc200d54eaf6db83a1407159, type: 3}
   description: "\uC0BC\uAC01\uAE40\uBC25\uC774\uB2E4.\n\uBC30\uACE0\uD514 + 10"
   category: 0
   weight: 20
