@@ -61,6 +61,13 @@ public class FrontWindowPerspectiveScroller : MonoBehaviour
 
     private void Update()
     {
+        // 연료가 0이면 정면 창문 배경 정지
+        if (FuelManager.Instance != null &&
+            !FuelManager.Instance.HasFuel)
+        {
+            return;
+        }
+
         if (cycleDuration <= 0f)
             return;
 

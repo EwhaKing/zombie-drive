@@ -30,8 +30,15 @@ public class GPSManager : MonoBehaviour
 
     private void Update()
     {
+
         // 차로 주행 중일 때만 실시간 시간/거리 차감 (초당 이동 거리 계산)
-        if (isDriving && remainingDistanceKM > 0f)
+        //변경* if (isDriving && remainingDistanceKM > 0f)
+
+        if (isDriving &&
+            remainingDistanceKM > 0f &&
+            (FuelManager.Instance == null ||
+              FuelManager.Instance.HasFuel))
+
         {
             float speedKmPerSec = speedKmPerHour / 3600f;
             remainingDistanceKM -= speedKmPerSec * Time.deltaTime;
