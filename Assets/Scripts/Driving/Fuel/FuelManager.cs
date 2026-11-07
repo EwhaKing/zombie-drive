@@ -10,17 +10,17 @@ public class FuelManager : MonoBehaviour
     public int maxFuel = 10;
     public int currentFuel = 10;
 
-    // 연료가 남아 있어야 주행 가능
-    public bool HasFuel => currentFuel > 0;
-
-    [Header("연료 감소 시간 (초)")]
+    [Header("연료 자동 감소 설정")]
     public float fuelDecreaseInterval = 180f;
 
-    // 현재까지 누적된 주행 시간
     private float fuelTimer = 0f;
+
+    // 연료가 남아 있으면 true
+    public bool HasFuel => currentFuel > 0;
 
     private void Awake()
     {
+        // 중복 컴포넌트 방지
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -29,7 +29,7 @@ public class FuelManager : MonoBehaviour
 
         Instance = this;
 
-        // 기존 GameManager와 함께 유지
+        // 기존 GameManager와 함께 씬 이동 시 유지
         if (transform.parent == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -38,59 +38,76 @@ public class FuelManager : MonoBehaviour
 
     private void Update()
     {
-        // 1. DrivingScene에서만 연료 감소
+        // DrivingScene에서만 감소
         if (SceneManager.GetActiveScene().name != "DrivingScene")
             return;
 
-        // 2. 차량이 주행 중이 아닐 때 감소 중단
+        // GPS가 주행 중이 아니면 감소 중단
         if (GPSManager.Instance != null &&
             !GPSManager.Instance.isDriving)
             return;
 
-        // 3. 연료가 0이면 감소 중단
-        if (currentFuel <= 0)
+        // 연료가 없으면 감소 중단
+        if (!HasFuel)
             return;
 
-        // 4. 감소 주기가 올바른지 확인
+        // 타이어가 없으면 감소 중단
+        if (VehicleTireStatusManager.Instance != null &&
+            !VehicleTireStatusManager.Instance.HasTire)
+            return;
+
+        // 감소 간격이 잘못되었으면 실행하지 않음
         if (fuelDecreaseInterval <= 0f)
             return;
 
-        // 5. 실제 플레이 시간 누적
+        // 실제 플레이 시간 누적
         fuelTimer += Time.deltaTime;
 
-        // 6. 설정된 시간이 지날 때마다 연료 1 감소
+        // 설정된 시간이 지나면 연료 1 감소
         if (fuelTimer >= fuelDecreaseInterval)
         {
             fuelTimer -= fuelDecreaseInterval;
             UseFuel(1);
 
-            Debug.Log("연료 1 감소! 현재 연료: " + currentFuel);
+            Debug.Log(
+                "연료 1 감소! 현재 연료: " + currentFuel
+            );
         }
     }
 
     // 연료 감소
     public void UseFuel(int amount)
     {
-        if (amount <= 0) return;
+        if (amount <= 0)
+            return;
 
         currentFuel = Mathf.Clamp(
-            currentFuel - amount, 0, maxFuel
+            currentFuel - amount,
+            0,
+            maxFuel
         );
     }
 
     // 연료 충전
     public void AddFuel(int amount)
     {
-        if (amount <= 0) return;
+        if (amount <= 0)
+            return;
 
         currentFuel = Mathf.Clamp(
-            currentFuel + amount, 0, maxFuel
+            currentFuel + amount,
+            0,
+            maxFuel
         );
     }
 
     // 연료값 직접 설정
     public void SetFuel(int amount)
     {
-        currentFuel = Mathf.Clamp(amount, 0, maxFuel);
+        currentFuel = Mathf.Clamp(
+            amount,
+            0,
+            maxFuel
+        );
     }
 }

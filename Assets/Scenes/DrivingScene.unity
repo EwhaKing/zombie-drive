@@ -8298,6 +8298,7 @@ GameObject:
   - component: {fileID: 1634177294}
   - component: {fileID: 1634177296}
   - component: {fileID: 1634177295}
+  - component: {fileID: 1634177297}
   m_Layer: 0
   m_Name: TireBar
   m_TagString: Untagged
@@ -8363,6 +8364,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634177293}
   m_CullTransparentMesh: 1
+--- !u!114 &1634177297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634177293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcab4d77275f1f84eb0d39b005c7daea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TireGaugeUI
+  tireFill: {fileID: 1414972562}
 --- !u!1 &1645303484
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,9 +21,10 @@ public class FuelGaugeUI : MonoBehaviour
             return;
         }
 
-        // 현재 연료량을 0~1 비율로 변환
-        fuelFill.fillAmount = Mathf.Clamp01(
+        float fuelRatio = Mathf.Clamp01(
             (float)currentFuel / maxFuel
         );
+
+        fuelFill.fillAmount = fuelRatio;
     }
 }

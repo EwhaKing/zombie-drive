@@ -9,12 +9,21 @@ public class TireGaugeUI : MonoBehaviour
 
     private void Update()
     {
-        if (TireManager.Instance == null || tireFill == null)
+        // 상단바 전용 타이어 매니저 확인
+        if (VehicleTireStatusManager.Instance == null)
             return;
 
-        int currentTire = TireManager.Instance.currentTire;
-        int maxTire = TireManager.Instance.maxTire;
+        if (tireFill == null)
+            return;
 
+        // 현재 타이어 상태 가져오기
+        int currentTire =
+            VehicleTireStatusManager.Instance.currentTire;
+
+        int maxTire =
+            VehicleTireStatusManager.Instance.maxTire;
+
+        // 최대값이 0 이하일 경우 오류 방지
         if (maxTire <= 0)
         {
             tireFill.fillAmount = 0f;
@@ -22,8 +31,11 @@ public class TireGaugeUI : MonoBehaviour
         }
 
         // 현재 타이어 상태를 0~1 비율로 변환
-        tireFill.fillAmount = Mathf.Clamp01(
+        float tireRatio = Mathf.Clamp01(
             (float)currentTire / maxTire
         );
+
+        // 상단바 게이지에 반영
+        tireFill.fillAmount = tireRatio;
     }
 }

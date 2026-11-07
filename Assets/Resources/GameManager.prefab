@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3907171586118991197}
   - component: {fileID: 8154654166109052647}
   - component: {fileID: 8879277014724451656}
-  - component: {fileID: 5311679224792837091}
+  - component: {fileID: 8201871595260957578}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -165,7 +165,7 @@ MonoBehaviour:
   maxFuel: 10
   currentFuel: 10
   fuelDecreaseInterval: 5
---- !u!114 &5311679224792837091
+--- !u!114 &8201871595260957578
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0accda9fddb1e6f47bd8ba5a1696a064, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TireManager
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleTireStatusManager
   maxTire: 10
   currentTire: 10
+  tireDecreaseInterval: 5
