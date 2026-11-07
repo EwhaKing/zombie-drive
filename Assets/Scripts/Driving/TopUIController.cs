@@ -1,24 +1,45 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
-// »ó´Ü UI¿¡ ÇöÀç ³¯Â¥¸¦ Ç¥½ÃÇÏ´Â ½ºÅ©¸³Æ®
+// ìƒë‹¨ UIì— í˜„ìž¬ ë‚ ì§œë¥¼ ìˆ«ìž ì´ë¯¸ì§€ë¡œ í‘œì‹œí•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸ (0~99ì¼)
 public class TopUIController : MonoBehaviour
 {
-    [Header("³¯Â¥ ÅØ½ºÆ® ¿¬°á")]
-    public TextMeshProUGUI dayText;
+    [Header("ìˆ«ìž ì´ë¯¸ì§€ ì—°ê²°")]
+    public Image tensDigitImage;   // ì‹­ì˜ ìžë¦¬ Image
+    public Image onesDigitImage;   // ì¼ì˜ ìžë¦¬ Image
+
+    [Header("ìˆ«ìž ìŠ¤í”„ë¼ì´íŠ¸ (ì¸ë±ìŠ¤ 0~9 = day0~day9)")]
+    public Sprite[] digitSprites = new Sprite[10];
+
+    private int lastDisplayedDay = -1; // ê°’ì´ ë°”ë€” ë•Œë§Œ ê°±ì‹ í•˜ê¸° ìœ„í•œ ìºì‹œ
 
     private void Update()
     {
-        // DrivingManager°¡ ¾ø´Â »óÅÂ¿¡¼­´Â ½ÇÇàÇÏÁö ¾ÊÀ½
-        if (DrivingManager.Instance == null)
+        if (DrivingManager.Instance == null) return;
+
+        int day = Mathf.Clamp(DrivingManager.Instance.currentDay, 0, 99);
+        if (day == lastDisplayedDay) return; // ë³€í™” ì—†ìœ¼ë©´ ìŠ¤í‚µ
+
+        lastDisplayedDay = day;
+        UpdateDayImages(day);
+    }
+
+    private void UpdateDayImages(int day)
+    {
+        int tens = day / 10;  // ì‹­ì˜ ìžë¦¬
+        int ones = day % 10;  // ì¼ì˜ ìžë¦¬
+
+        // ì¼ì˜ ìžë¦¬ëŠ” í•­ìƒ í‘œì‹œ
+        if (onesDigitImage != null)
         {
-            return;
+            onesDigitImage.sprite = digitSprites[ones];
         }
 
-        // Day 1, Day 2, Day 3 Çü½ÄÀ¸·Î Ç¥½Ã
-        if (dayText != null)
+        // ì‹­ì˜ ìžë¦¬ëŠ” 10ì¼ ì´ìƒì¼ ë•Œë§Œ í‘œì‹œ (1ì¼ -> "1", 12ì¼ -> "12")
+        if (tensDigitImage != null)
         {
-            dayText.text = "Day " + DrivingManager.Instance.currentDay;
+            tensDigitImage.gameObject.SetActive(tens > 0);
+            if (tens > 0) tensDigitImage.sprite = digitSprites[tens];
         }
     }
 }
