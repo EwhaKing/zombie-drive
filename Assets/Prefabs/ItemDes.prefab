@@ -448,12 +448,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a75654a0135824ca44ea4acd00aba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemUsePopUp
+  mode: 0
   panel: {fileID: 5823571272033621057}
   itemIcon: {fileID: 2337869379635235226}
   nameText: {fileID: 1930462214491888208}
   descriptionText: {fileID: 6266527334080652356}
   useButton: {fileID: 8299262014631684735}
+  discardButton: {fileID: 0}
   cancelButton: {fileID: 478674477212122791}
+  discardWholeStack: 1
 --- !u!1 &3918460037421195682
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &998946829927874244
 RectTransform:
   m_ObjectHideFlags: 0
