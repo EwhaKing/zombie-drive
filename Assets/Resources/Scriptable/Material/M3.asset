@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa834c7fd3e8fee4881ec5ba6ff260c8, type: 3}
+  m_Name: M3
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: M3
+  icon: {fileID: 4606908045521496030, guid: ba2749b4b433a4c4abf388d63c59734f, type: 3}
+  description: "\uC7AC\uB8CC3"
+  category: 1
+  weight: 50
+  itemScale: 1
+  slotScale: 1
+  hungerRestoreAmount: 20

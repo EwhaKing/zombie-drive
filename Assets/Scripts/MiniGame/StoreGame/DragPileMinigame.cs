@@ -76,8 +76,7 @@ public class DragPileMinigame : MonoBehaviour, IDragHandler
         Button btn = foodObj.GetComponent<Button>();
         btn.onClick.AddListener(() =>
         {
-            gameManager.AddToInventory(item);
-            Destroy(foodObj);
+            if (gameManager.AddToInventory(item)) Destroy(foodObj);
         });
     }
 
