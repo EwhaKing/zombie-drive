@@ -295,6 +295,7 @@ MonoBehaviour:
   furnitureButton: {fileID: 2557290975334887070}
   placementButton: {fileID: 5879458630868973433}
   fusionButton: {fileID: 4660335021485387066}
+  fusionPanel: {fileID: 0}
 --- !u!1 &2557290975334887070
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +575,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4660335021485387066}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -669,9 +670,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3967189286190793811}
-        m_TargetAssemblyTypeName: FurnitureFusionManager, Assembly-CSharp
-        m_MethodName: GoToFusionScene
+      - m_Target: {fileID: 8616792835606741113}
+        m_TargetAssemblyTypeName: FurnitureUIManager, Assembly-CSharp
+        m_MethodName: OnFusionButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -719,7 +720,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5879458630868973433}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -729,7 +730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: 217}
+  m_AnchoredPosition: {x: -0.000015258789, y: 217}
   m_SizeDelta: {x: 143.6022, y: 147.0665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1920251293484990770

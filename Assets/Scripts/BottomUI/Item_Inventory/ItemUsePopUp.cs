@@ -60,9 +60,12 @@ public class ItemUsePopUp : MonoBehaviour
 
         if (nameText != null) nameText.text = item.itemName;
 
+        // 먹기/사용은 메인씬에서 '음식'만 가능 (재료·가구를 먹기로 소모하는 것을 방지)
+        bool usable = (mode == PopupMode.Main) && item.category == ItemCategory.Food;
+
         if (descriptionText != null)
         {
-            descriptionText.text = (mode == PopupMode.Main)
+            descriptionText.text = usable
                 ? $"{item.description}\n\n<b>이 아이템을 사용하시겠습니까?</b>"
                 : item.description;
         }
@@ -70,7 +73,7 @@ public class ItemUsePopUp : MonoBehaviour
         // 모드에 맞는 버튼만 표시
         if (useButton != null)
         {
-            useButton.gameObject.SetActive(mode == PopupMode.Main);
+            useButton.gameObject.SetActive(usable);
             useButton.onClick.RemoveAllListeners();
             useButton.onClick.AddListener(OnConfirmUse);
         }
