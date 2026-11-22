@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: 
   icon: {fileID: -8729099446194232902, guid: 12b1f95f4485663409ad3018e1636724, type: 3}
   description: 
-  category: 0
+  category: 4
   weight: 0
   itemScale: 1
   slotScale: 1

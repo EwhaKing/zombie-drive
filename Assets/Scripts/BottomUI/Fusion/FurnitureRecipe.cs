@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 도안(레시피) 에셋.
+// 새 도안은 Assets/Resources/Recipes 폴더에 만들어 두기만 하면 합성창이 자동으로 읽어옵니다.
 [CreateAssetMenu(menuName = "Furniture/Recipe")]
 public class FurnitureRecipe : ScriptableObject
 {
     public string furnitureId;
-    public string displayName;           // 비우면 resultItem.itemName 사용
+    public string displayName;            // 비우면 resultItem.itemName 사용
     [TextArea] public string description; // 비우면 resultItem.description 사용
-    public Sprite icon;                  // 비우면 resultItem.icon 사용
-    public int goldCost;
+    public Sprite icon;                   // 비우면 resultItem.icon 사용
+    public int sortOrder;                 // 목록 표시 순서 (작을수록 앞, 같으면 에셋 이름순)
 
     [Header("제작 결과 (Category = Furniture 인 ItemData)")]
     public ItemData resultItem;

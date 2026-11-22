@@ -1,6 +1,7 @@
 // FurnitureFusionUI.cs  (FusionPanel에 붙임)
 // 재료/결과 가구는 모두 InventoryManager(파밍 재료가 저장되는 그 인벤토리)를 사용합니다.
-// 골드만 PlayerInventory.gold 를 사용합니다.
+// 도안은 Resources/Recipes 폴더에서 자동으로 불러옵니다. (골드/코인은 사용하지 않음)
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,19 +11,21 @@ using UnityEngine.UI;
 public class FurnitureFusionUI : MonoBehaviour
 {
     [Header("도안(레시피) 목록")]
-    public FurnitureRecipe[] recipes;                 // 가진 도안 목록
+    public bool autoLoadFromResources = true;         // true: Resources 폴더의 모든 도안을 자동으로 불러옴
+    public string resourcesPath = "Recipes";          // Assets/Resources/Recipes
+    public FurnitureRecipe[] recipes;                 // 자동 로드가 꺼져 있거나 폴더가 비었을 때 쓰는 수동 목록
     public Transform recipeListContent;               // 도안 칸들이 생성될 부모 (ScrollView의 Content)
     public FurnitureRecipeSlotUI recipeSlotPrefab;    // 도안 칸 프리팹 (비워두면 첫 도안이 자동 선택됨)
 
     [Header("선택한 도안 상세")]
     public Image resultImage;
-    public TMP_Text nameText, descText, costText;
+    public TMP_Text nameText, descText;
     public MaterialSlotUI[] slots;
     public Button craftButton;
 
     [Header("선택 사항")]
     public GameObject emptyGuide;                     // "제작할 가구를 선택하세요" 안내 오브젝트
-    // 제작 불가 이유(골드/재료 부족)와 "제작 완료!" 메시지를 보여줄 글자
+    // 제작 불가 이유(재료 부족)와 "제작 완료!" 메시지를 보여줄 글자
     public TMP_Text messageText;
     public float messageSeconds = 2f;
     public bool autoSelectFirst = false;              // 열 때 첫 도안을 자동 선택할지
@@ -33,6 +36,7 @@ public class FurnitureFusionUI : MonoBehaviour
 
     void OnEnable()
     {
+        LoadRecipes();
         BuildRecipeList();
 
         bool noList = recipeSlotPrefab == null || recipeListContent == null;
@@ -40,6 +44,27 @@ public class FurnitureFusionUI : MonoBehaviour
         selected = pickFirst ? recipes[0] : null;
 
         Refresh(); // 열 때마다 인벤토리 최신 수량으로 갱신
+    }
+
+    // Resources/Recipes 안의 도안을 전부 읽어옴 (하위 폴더 포함)
+    void LoadRecipes()
+    {
+        if (!autoLoadFromResources) return;
+
+        FurnitureRecipe[] loaded = Resources.LoadAll<FurnitureRecipe>(resourcesPath);
+        if (loaded.Length == 0)
+        {
+            if (recipes == null || recipes.Length == 0)
+                Debug.LogWarning($"[FurnitureFusionUI] Resources/{resourcesPath} 폴더에서 도안을 찾지 못했습니다.");
+            return;   // 수동 목록 유지
+        }
+
+        Array.Sort(loaded, (a, b) =>
+        {
+            int c = a.sortOrder.CompareTo(b.sortOrder);
+            return c != 0 ? c : string.Compare(a.name, b.name, StringComparison.Ordinal);
+        });
+        recipes = loaded;
     }
 
     void BuildRecipeList()
@@ -78,8 +103,6 @@ public class FurnitureFusionUI : MonoBehaviour
         return inv.items.TryGetValue(item, out int n) ? n : 0;
     }
 
-    static int Gold => PlayerInventory.Instance != null ? PlayerInventory.Instance.gold : 0;
-
     // 제작할 수 없는 이유 (제작 가능하면 null)
     string GetBlockReason(FurnitureRecipe r)
     {
@@ -96,11 +119,8 @@ public class FurnitureFusionUI : MonoBehaviour
         foreach (var kv in need)
         {
             int have = CountOf(kv.Key);
-            if (have < kv.Value) return $"재료가 부족합니다.";
+            if (have < kv.Value) return $"재료가 부족합니다. ({kv.Key.itemName} {have}/{kv.Value})";
         }
-
-        if (PlayerInventory.Instance == null) return "PlayerInventory가 없어 골드를 확인할 수 없습니다.";
-        if (Gold < r.goldCost) return $"골드가 부족합니다. ({Gold}/{r.goldCost})";
 
         return null;
     }
@@ -126,12 +146,6 @@ public class FurnitureFusionUI : MonoBehaviour
         if (nameText != null) nameText.text = has ? selected.DisplayName : "";
         if (descText != null) descText.text = has ? selected.Description : "";
 
-        if (costText != null)
-        {
-            costText.text = has ? selected.goldCost.ToString() : "";
-            costText.color = (has && Gold < selected.goldCost) ? Color.red : Color.white;
-        }
-
         // 재료 칸: 이미지 + 이름 + 보유/필요 수량
         for (int i = 0; i < slots.Length; i++)
         {
@@ -146,7 +160,6 @@ public class FurnitureFusionUI : MonoBehaviour
             Debug.LogWarning($"[FurnitureFusionUI] '{selected.name}' 재료가 {selected.ingredients.Count}개인데 재료 칸은 {slots.Length}개뿐입니다.");
 
         // 제작 버튼: 도안을 골랐다면 항상 누를 수 있게 두고, 못 만드는 상태면 흐리게 표시.
-        // (눌렀을 때 못 만드는 이유가 메시지로 나옴)
         if (craftButton != null)
         {
             craftButton.interactable = has;
@@ -193,8 +206,6 @@ public class FurnitureFusionUI : MonoBehaviour
         foreach (var ing in selected.ingredients)
             inv.RemoveItem(ing.item, ing.amount);          // 재료 차감 (0이 되면 자동으로 목록에서 제거)
 
-        PlayerInventory.Instance.gold -= selected.goldCost;
-
         inv.AddItem(selected.resultItem, 1);               // 결과 가구 → 메인 인벤토리 '가구' 탭에 표시됨
 
         string doneMsg = $"{selected.DisplayName} 제작 완료!";
@@ -225,7 +236,7 @@ public class FurnitureFusionUI : MonoBehaviour
     }
 
     // ===== 테스트용: Play 중 컴포넌트 우측 ⋮ 메뉴에서 실행 =====
-    [ContextMenu("디버그: 선택한 도안의 재료와 골드 지급")]
+    [ContextMenu("디버그: 선택한 도안의 재료 지급")]
     void DebugGiveForSelected()
     {
         if (selected == null) { Debug.LogWarning("먼저 도안을 선택하세요."); return; }
@@ -234,16 +245,6 @@ public class FurnitureFusionUI : MonoBehaviour
         foreach (var ing in selected.ingredients)
             if (ing != null && ing.item != null) InventoryManager.Instance.AddItem(ing.item, ing.amount);
 
-        if (PlayerInventory.Instance != null) PlayerInventory.Instance.gold += selected.goldCost;
-        else Debug.LogWarning("PlayerInventory가 없어 골드는 지급하지 못했습니다.");
-        Refresh();
-    }
-
-    [ContextMenu("디버그: 골드 +10000")]
-    void DebugGiveGold()
-    {
-        if (PlayerInventory.Instance == null) { Debug.LogWarning("PlayerInventory가 없습니다. 첫 씬에서 시작했는지 확인하세요."); return; }
-        PlayerInventory.Instance.gold += 10000;
         Refresh();
     }
 }
