@@ -15,9 +15,9 @@ MonoBehaviour:
   furnitureId: Craft1
   displayName: "\uC637"
   description: "\uC608\uC05C\uC637"
-  icon: {fileID: -2982798086813019253, guid: 362f0cf096eb4dc429c40e35086b44e0, type: 3}
+  icon: {fileID: 0}
   goldCost: 2000
-  resultItem: {fileID: 11400000, guid: 6790eda4eeee12245a05832910b0d294, type: 2}
+  resultItem: {fileID: 11400000, guid: f560fe267ab20e34784fb0b1db5296f0, type: 2}
   ingredients:
   - item: {fileID: 11400000, guid: 8f5df73c50f783f498b945136707ed33, type: 2}
     amount: 1
